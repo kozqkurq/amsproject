@@ -1,0 +1,48 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "amsprojecte356006b_identitypool_e356006b",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "amsproe356006b",
+    "userPoolName": "amsprojecte356006b_userpool_e356006b",
+    "autoVerifiedAttributes": [
+      "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "email"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+      "email"
+    ],
+    "userpoolClientReadAttributes": [
+      "email"
+    ],
+    "userpoolClientLambdaRole": "amsproe356006b_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "e356006b",
+    "resourceName": "amsprojecte356006b",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "default",
+    "usernameAttributes": [
+      "email"
+    ],
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
+  }
+}
