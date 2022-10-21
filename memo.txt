@@ -8,3 +8,13 @@
 デザイン修正
 
 なにを使ってどう進めるか
+
+
+
+git共有手順
+git add .
+git commit -m '{コメント}'
+git push
+
+pull手順
+git pull
