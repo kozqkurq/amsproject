@@ -1,20 +1,46 @@
 import React from 'react';
 import { StyleSheet, View, Image, Button,} from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import { vocabularies } from './Translation.js';
 
-import { Authenticator } from 'aws-amplify-react-native';
-import config from '../src/aws-exports.js';
-import Amplify from "aws-amplify";
-import { I18n } from 'aws-amplify'
+import { Authenticator} from 'aws-amplify-react-native';
+import { I18n } from 'aws-amplify';
+import { AmplifyTheme } from './AmplifyTheme.js';
+// const currentAuthUser = await Auth.currentAuthenticatedUser();
+// const session = await Auth.userSession(currentAuthUser);
 
-Amplify.configure(config);
 
 function HomeScreen({ navigation }) {
 
-  return (
+  const signUpConfig = {
+    hideAllDefaults: true,
+    signUpFields: [
+      {
+        label: 'Email',
+        key: 'email',
+        required: true,
+        displayOrder: 1,
+        type: 'string',
+      },
+      {
+        label: 'Password',
+        key: 'password',
+        required: true,
+        displayOrder: 2,
+        type: 'password',
+      },
+      {
+        label: 'TitleName',
+        key: 'titlename',
+        required: true,
+        displayOrder: 3,
+        type: 'string',
+      },
+    ],
+  }
 
+  return (
     <View style={styles.Container}>
       <Animatable.View
         animation='bounce'
@@ -24,18 +50,19 @@ function HomeScreen({ navigation }) {
           style={styles.Img}
           source={require('/Users/iidzukateru/Desktop/AmsProject/images/ams_logo.png')} />
       </Animatable.View>
-      <Authenticator usernameAlias="email"/>
+      
+      <Authenticator
+        usernameAttributes="email"
+        signUpConfig={signUpConfig}
+        theme={AmplifyTheme}
+        >
+      </Authenticator >
+
         
-      <View style={styles.BtnWrap}>
-        <Button
-          style={styles.Btn}
-          title="ログイン"
-          coler="white"
-          onPress={() => navigation.navigate('UserTab')} />
-      </View>
+      
 
     </View>
-
+    
   );
 }
 
@@ -63,5 +90,5 @@ const styles = StyleSheet.create({
 });
 export default HomeScreen;
 
-I18n.putVocabularies(vocabularies)
-I18n.setLanguage('ja')
+I18n.putVocabularies(vocabularies);
+I18n.setLanguage('ja');

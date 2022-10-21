@@ -1,4 +1,4 @@
-import { Translations } from '@aws-amplify/ui-components'
+import { Translations } from '@aws-amplify/ui-components';
 
 
 export const vocabularies = {
@@ -129,5 +129,12 @@ export const vocabularies = {
          'Password does not conform to policy: Password must have lowercase characters': 'パスワードには小文字を含めてください (8文字以上の大文字小文字を含む英数字)',
          'Password does not conform to policy: Password must have numeric characters': 'パスワードには数字を含めてください (8文字以上の大文字小文字を含む英数字)',
          "1 validation error detected: Value at 'password' failed to satisfy constraint: Member must have length greater than or equal to 6": 'パスワードは8文字以上、大文字小文字を含む英数字を指定してください',
+         'Enter your email': 'メールアドレスを入力',
+         'Confirm a Code':'認証コードを送信',
+         'Confirm Sign Up':'新規登録認証コード',
+         'Enter your confirmation code':'認証コードを入力',
+         'Resend code':'認証コードを再送信',
+         'TitleName':'役職名',
+         'UserName':'ユーザー名',
      },
    }
