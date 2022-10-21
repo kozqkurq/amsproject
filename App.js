@@ -43,13 +43,6 @@ const signUpConfig = {
         displayOrder: 3,
         type: 'password',
       },
-      {
-        label: 'TitleName',
-        key: 'titlename',
-        required: true,
-        displayOrder: 4,
-        type: 'string',
-      },
     ],
   }
 
