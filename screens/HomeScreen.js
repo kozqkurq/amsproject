@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, Button,} from 'react-native';
+import { StyleSheet, View, Image, Button, Text} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import { vocabularies } from './Translation.js';
@@ -13,33 +13,6 @@ import { AmplifyTheme } from './AmplifyTheme.js';
 
 function HomeScreen({ navigation }) {
 
-  const signUpConfig = {
-    hideAllDefaults: true,
-    signUpFields: [
-      {
-        label: 'Email',
-        key: 'email',
-        required: true,
-        displayOrder: 1,
-        type: 'string',
-      },
-      {
-        label: 'Password',
-        key: 'password',
-        required: true,
-        displayOrder: 2,
-        type: 'password',
-      },
-      {
-        label: 'TitleName',
-        key: 'titlename',
-        required: true,
-        displayOrder: 3,
-        type: 'string',
-      },
-    ],
-  }
-
   return (
     <View style={styles.Container}>
       <Animatable.View
@@ -51,12 +24,12 @@ function HomeScreen({ navigation }) {
           source={require('/Users/iidzukateru/Desktop/AmsProject/images/ams_logo.png')} />
       </Animatable.View>
       
-      <Authenticator
+      {/* <Authenticator
         usernameAttributes="email"
         signUpConfig={signUpConfig}
         theme={AmplifyTheme}
         >
-      </Authenticator >
+      </Authenticator > */}
 
         
       
