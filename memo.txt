@@ -9,6 +9,15 @@
 
 なにを使ってどう進めるか
 
+node.jsをサイトからインストール
+expoインストール
+npm install -g expo-cli
+AmsProjectに移動
+expo start
+ナビゲーション
+expo init react-native-navigation
+expo install react-native-screens react-native-safe-area-context
+npm install @react-navigation/native-stack
 
 
 git共有手順
