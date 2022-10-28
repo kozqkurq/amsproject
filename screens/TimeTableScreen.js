@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
+import { DataStore } from '@aws-amplify/datastore';
+import { HomeroomTeacher, Student } from './models';
 
 
 const TimeTableScreen = () => {
@@ -13,6 +15,8 @@ const TimeTableScreen = () => {
       };
     }, [])
   );
+  const models = DataStore.query(Student);
+  console.log(models);
   return (
     <View>
       <Text>時間割画面</Text>
