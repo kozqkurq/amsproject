@@ -18,7 +18,7 @@ const UserScreen = ({ navigation }) => {
   return (
     <View style={ styles.Container }>
       <View style={ styles.Box1 }>
-          <Text style={{ fontSize: 18,}}>連絡がありません</Text>
+          <Text style={{ fontSize: 18, position: 'absolute', left: 80, bottom: 50}}>連絡がありません</Text>
           <Button 
                title="連絡一覧へ"
                color="gray"

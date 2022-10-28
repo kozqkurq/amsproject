@@ -1,9 +1,70 @@
-# This "input" configures a global authorization rule to enable public access to
-# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+type AttendStudentsJSON {
+  studentId: String!
+  tim: AWSTime!
+}
 
-type Todo @model {
+type AttendJSON {
+  date: AWSDate!
+  students: [AttendStudentsJSON!]
+}
+
+type Class @model @auth(rules: [{allow: public}]) @key(name: "byHomeroomTeacher", fields: ["homeroomteacherID"]) {
+  id: ID!
+  Lessons: [Lesson] @connection(keyName: "byClass", fields: ["id"])
+  Students: [Student] @connection(keyName: "byClass", fields: ["id"])
+  name: String
+  homeroomteacherID: ID!
+}
+
+type Lesson @model @auth(rules: [{allow: public}]) @key(name: "byLessonTeacher", fields: ["lessonteacherID"]) @key(name: "byClass", fields: ["classID"]) {
+  id: ID!
+  lessonteacherID: ID!
+  dName: String!
+  oName: String!
+  timetable: String!
+  credit: String!
+  NOL: Int!
+  classID: ID!
+  attend: AttendStudentsJSON
+  Students: [LessonStudent] @connection(keyName: "byLesson", fields: ["id"])
+}
+
+type LessonTeacher @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Employee: Employee @connection
+  affiliation: String
+  Lessons: [Lesson] @connection(keyName: "byLessonTeacher", fields: ["id"])
+}
+
+type Employee @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
-  description: String
+  DOB: AWSDate
+  flag: Boolean!
+}
+
+type HomeroomTeacher @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Employee: Employee @connection
+  Classes: [Class] @connection(keyName: "byHomeroomTeacher", fields: ["id"])
+}
+
+type Student @model @auth(rules: [{allow: public}]) @key(name: "byClass", fields: ["classID"]) {
+  id: ID!
+  name: String!
+  DOB: AWSDate!
+  grade: Int!
+  course: String!
+  credits: Int
+  attendRate: Float
+  classID: ID!
+  lessons: [LessonStudent] @connection(keyName: "byStudent", fields: ["id"])
+}
+
+type LessonStudent @model(queries: null) @key(name: "byLesson", fields: ["lessonID", "studentID"]) @key(name: "byStudent", fields: ["studentID", "lessonID"]) @auth(rules: [{allow: public}, {allow: public}]) {
+  id: ID!
+  lessonID: ID!
+  studentID: ID!
+  lesson: Lesson! @connection(fields: ["lessonID"])
+  student: Student! @connection(fields: ["studentID"])
 }
