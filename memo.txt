@@ -27,3 +27,7 @@ git push
 
 pull手順
 git pull
+
+ログイン
+2004230017it@edu.oca.ac.jp
+Teruaws2022

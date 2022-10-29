@@ -1,15 +1,12 @@
 {
   "version": 1,
   "serviceConfiguration": {
-    "apiName": "amsproject",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 7,
-      "apiKeyExpirationDate": "2022-10-28T05:18:53.287Z",
-      "keyDescription": ""
+      "mode": "AWS_IAM"
     },
     "conflictResolution": {},
+    "apiName": "amsproject",
     "additionalAuthTypes": []
   }
 }

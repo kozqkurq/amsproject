@@ -17,7 +17,12 @@ import { withAuthenticator} from 'aws-amplify-react-native';
 
 const Stack = createNativeStackNavigator();
 
-Amplify.configure(config);
+Amplify.configure({
+  ...config,
+  Analytics: {
+    disabled: true,
+  },
+});
 
 const signUpConfig = {
     hideAllDefaults: true,
