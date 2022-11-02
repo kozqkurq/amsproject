@@ -20,6 +20,7 @@ export default function Scanner() {
   //リンクを開く事がでない場合にはメッセージを表示する
   const handleBarCodeScanned = ({ data }) => {
     Linking.openURL(data)
+    // navigation.push('Attend')
       .then(() => setScanned(true))
       .catch((err) => {
         setScanned(true);
@@ -36,9 +37,10 @@ export default function Scanner() {
       {/* カメラアにクセスすることが許可されている場合 */}
       {hasPermission && (
         <BarCodeScanner
-          barCodeTypes={["qr"]}
+        barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={StyleSheet.absoluteFillObject}
+          // BarCodePoint={{10}, {10}}
         />
       )}
       {/* スキャンが終わってから表示する */}

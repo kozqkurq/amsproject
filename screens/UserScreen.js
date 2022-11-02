@@ -35,7 +35,7 @@ const UserScreen = ({ navigation }) => {
                onPress={() => navigation.navigate('AttendRate')}>
           </Button>
       </View>
-      <View style={ styles.Box }>
+      <View style={[ styles.Box, styles.BoxLast ]}>
       <Image
           style={styles.Img2}
           source={require('../images/AI3B.png')} />
@@ -73,6 +73,9 @@ const styles = StyleSheet.create({
           marginHorizontal: 32,
           borderWidth: 2,
           borderRadius: 16,
+     },
+     BoxLast: {
+          marginBottom: 32,
      },
      Img1: {
           position: 'absolute',
