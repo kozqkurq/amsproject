@@ -1,52 +1,33 @@
 import React from 'react';
 import { View, Image, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
 
 const UserScreen = ({ navigation }) => {
-
-  useFocusEffect(
-    React.useCallback(() => {
-      console.log('User Focus');
-
-      return () => {
-        console.log('User UnFocus');
-      };
-    }, [])
-  );
 
   return (
     <View style={ styles.Container }>
       <View style={ styles.Box1 }>
           <Text style={{ fontSize: 18, position: 'absolute', left: 80, bottom: 50}}>連絡がありません</Text>
           <View style={ styles.btnBox }>
-               <TouchableOpacity onPress={() => navigation.navigate('Contact')}>
+               <TouchableOpacity onPress={() => navigation.replace('Contact')}>
                     <Text style={styles.btnTxt}>連絡一覧へ</Text>
                </TouchableOpacity>
           </View>
-          
      </View>
-      <View style={ styles.Box }>
-      <Image
-          style={styles.Img1}
-          source={require('../images/出席率.png')} />
+     <View style={ styles.Box }>
+          <Image style={styles.Img1} source={require('../images/出席率.png')}/>
           <View style={ styles.btnBox }>
-               <TouchableOpacity onPress={() => navigation.navigate('AttendRate')}>
+               <TouchableOpacity onPress={() => navigation.replace('AttendRate')}>
                     <Text style={styles.btnTxt}>出席率詳細へ</Text>
                </TouchableOpacity>
           </View>
-          
       </View>
       <View style={[ styles.Box, styles.BoxLast ]}>
-      <Image
-          style={styles.Img2}
-          source={require('../images/AI3B.png')} />
+      <Image style={styles.Img2} source={require('../images/AI3B.png')}/>
           <View style={ styles.btnBox }>
-              <TouchableOpacity onPress={() => navigation.navigate('TimeTable')}>
+              <TouchableOpacity onPress={() => navigation.replace('TimeTable')}>
                     <Text style={styles.btnTxt}>時間割詳細へ</Text> 
                </TouchableOpacity>
-               
           </View>
-          
       </View>
     </View>
   );

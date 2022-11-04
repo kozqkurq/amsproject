@@ -16,11 +16,9 @@ const AttendScreen = ( props ) => {
     props.navigation.setOptions({
       headerTitle: () => (
         <Image
-            style={styles.hImg}
-            source={
-              require(
-                '/Users/iidzukateru/Desktop/AmsProject/images/AMA_logo.png'
-              )} />
+          style={styles.hImg}
+          source={require('../images/AMA_logo.png')}
+        />
       ),
       headerRight: () => (
         <View style={styles.hBtn}>
@@ -30,14 +28,14 @@ const AttendScreen = ( props ) => {
         </View>
       ),
       headerLeft: () => (
-        <Button title='戻る' onPress={() => props.navigation.navigate('UserTab')}></Button>
+        <Button title='戻る' onPress={() => props.navigation.navigate('UserTab')}/>
       ),
     });
   return (
     <View style={styles.attendBox}>
       <Text style={styles.txt}>出席ボタンを押すと出席になります</Text>
       <View style={styles.btnBox}>
-        <TouchableOpacity onPress={() => props.navigation.navigate('AttendAfter')}>
+        <TouchableOpacity onPress={() => props.navigation.replace('AttendAfter')}>
           <Text style={styles.btnText}>出席</Text>
         </TouchableOpacity>
       </View>

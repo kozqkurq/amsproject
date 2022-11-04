@@ -4,23 +4,20 @@ import { View, Image, Text, TouchableWithoutFeedback, TouchableOpacity, Button, 
 import { Auth } from "aws-amplify";
 
 async function signOut() {
-    try {
-      await Auth.signOut();
-    } catch (error) {
-      console.log('Error signing out: ', error);
-    }
+  try {
+    await Auth.signOut();
+  } catch (error) {
+    console.log('Error signing out: ', error);
   }
+}
 
 const AttendScreen = ( props ) => {
-  
     props.navigation.setOptions({
       headerTitle: () => (
         <Image
-            style={styles.hImg}
-            source={
-              require(
-                '/Users/iidzukateru/Desktop/AmsProject/images/AMA_logo.png'
-              )} />
+          style={styles.hImg}
+          source={require('../images/AMA_logo.png')} 
+        />
       ),
       headerRight: () => (
         <View style={styles.hBtn}>
@@ -29,15 +26,15 @@ const AttendScreen = ( props ) => {
           </TouchableWithoutFeedback>
         </View>
       ),
-      headerLeft: () => (
-        <Button title='戻る' onPress={() => props.navigation.replace('UserTab')}></Button>
-      ),
+      // headerLeft: () => (
+      //   <Button title='戻る' onPress={() => props.navigation.replace('UserTab')}/>
+      // ),
     });
   return (
     <View style={styles.attendBox}>
       <Text style={styles.txt}>出席完了しました</Text>
       <View style={styles.btnBox}>
-        <Button title='Topに戻る' onPress={() => props.navigation.navigate('UserTab')}/>
+        <Button title='Topに戻る' onPress={() => props.navigation.replace('UserTab')}/>
       </View>
       
     </View>

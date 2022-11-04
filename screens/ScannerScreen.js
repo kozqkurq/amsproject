@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, Pressable, Linking } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { useNavigation, StackActions} from '@react-navigation/native';
 
-
 export default function Scanner( props ) {
   const navigation = useNavigation();
 
@@ -22,14 +21,15 @@ export default function Scanner( props ) {
 
   //QRコードがスキャンされると、読み取ったリンクを開く
   //リンクを開く事がでない場合にはメッセージを表示する
-  const handleBarCodeScanned = ({data, nav}) => {
+  const handleBarCodeScanned = ({data}) => {
     // Linking.openURL(data)
-    nav.replace('Attend')
-      .then(() => setScanned(true))
-      .catch((err) => {
-        setScanned(true);
-        alert("リンクを開く事ができませんでした。");
-      });
+    navigation.replace('Attend')
+    setScanned(true);
+      // .then(() => setScanned(true))
+      // .catch((err) => {
+      //   setScanned(true);
+      //   alert("リンクを開く事ができませんでした。");
+      // });
   };
 
   return (
@@ -42,7 +42,7 @@ export default function Scanner( props ) {
       {hasPermission && (
         <BarCodeScanner
         barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned({nav: navigation})}
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={StyleSheet.absoluteFillObject}
         />
       )}

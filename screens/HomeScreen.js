@@ -12,7 +12,7 @@ function HomeScreen({ navigation }) {
         iterationDelay={100}>
         <Image
           style={styles.Img}
-          source={require('/Users/iidzukateru/Desktop/AmsProject/images/AMA_logo.png')} />
+          source={require('../images/AMA_logo.png')} />
       </Animatable.View>
       button
     </View>
