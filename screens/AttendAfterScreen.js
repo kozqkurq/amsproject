@@ -30,16 +30,14 @@ const AttendScreen = ( props ) => {
         </View>
       ),
       headerLeft: () => (
-        <Button title='戻る' onPress={() => props.navigation.navigate('UserTab')}></Button>
+        <Button title='戻る' onPress={() => props.navigation.replace('UserTab')}></Button>
       ),
     });
   return (
     <View style={styles.attendBox}>
-      <Text style={styles.txt}>出席ボタンを押すと出席になります</Text>
+      <Text style={styles.txt}>出席完了しました</Text>
       <View style={styles.btnBox}>
-        <TouchableOpacity onPress={() => props.navigation.navigate('AttendAfter')}>
-          <Text style={styles.btnText}>出席</Text>
-        </TouchableOpacity>
+        <Button title='Topに戻る' onPress={() => props.navigation.navigate('UserTab')}/>
       </View>
       
     </View>
@@ -84,14 +82,14 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     backgroundColor: 'white',
   },
-  btnBox: {
-    width: 80,
-    height: 60,
-    borderRadius: 100,
-    backgroundColor: 'orange',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
+//   btnBox: {
+//     width: 80,
+//     height: 60,
+//     borderRadius: 100,
+//     backgroundColor: 'orange',
+//     marginLeft: 'auto',
+//     marginRight: 'auto',
+//   },
   btnText: {
     color: 'white',
     fontSize: 18,

@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Pressable, Linking } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import { useNavigation, StackActions} from '@react-navigation/native';
 
-export default function Scanner() {
+
+export default function Scanner( props ) {
+  const navigation = useNavigation();
+
   //アプリはカメラを使う許可が認められるかどうか
   const [hasPermission, setHasPermission] = useState(null);
   //アプリはQRコードをスキャンしたかどうか
@@ -18,9 +22,9 @@ export default function Scanner() {
 
   //QRコードがスキャンされると、読み取ったリンクを開く
   //リンクを開く事がでない場合にはメッセージを表示する
-  const handleBarCodeScanned = ({ data }) => {
-    Linking.openURL(data)
-    // navigation.push('Attend')
+  const handleBarCodeScanned = ({data, nav}) => {
+    // Linking.openURL(data)
+    nav.replace('Attend')
       .then(() => setScanned(true))
       .catch((err) => {
         setScanned(true);
@@ -38,9 +42,8 @@ export default function Scanner() {
       {hasPermission && (
         <BarCodeScanner
         barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned({nav: navigation})}
           style={StyleSheet.absoluteFillObject}
-          // BarCodePoint={{10}, {10}}
         />
       )}
       {/* スキャンが終わってから表示する */}

@@ -39,3 +39,5 @@ git pull
 ログイン
 2004230017it@edu.oca.ac.jp
 Teruaws2022
+
+https://github.com/teru77723/amsproject

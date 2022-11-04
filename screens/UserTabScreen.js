@@ -1,5 +1,5 @@
 import React from 'react';
-import { View,  Button, StyleSheet } from 'react-native';
+import { View, Image, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -19,12 +19,21 @@ async function signOut() {
 
 const UserTabScreen = ( props ) => {
   props.navigation.setOptions({
+    headerTitle: () => (
+      <Image
+          style={styles.hImg}
+          source={
+            require(
+              '/Users/iidzukateru/Desktop/AmsProject/images/AMA_logo.png'
+            )} />
+    ),
     headerRight: () => (
-      <View style={styles.Btn}>
-        <Button title="ログアウト" color="black" onPress={signOut}/>
+      <View style={styles.hBtn}>
+        <TouchableWithoutFeedback color="black" onPress={signOut}>
+          <Text style={styles.hbtnTxt}>ログアウト</Text>
+        </TouchableWithoutFeedback>
       </View>
-  ),
-
+    ),
   });
   useFocusEffect(
     React.useCallback(() => {
@@ -43,14 +52,15 @@ const UserTabScreen = ( props ) => {
       >
 
         <Tab.Screen
-          name="User"
+          name="ユーザー"
           component={UserScreen}
           options={{
             tabBarIcon: ({ focused }) => <Ionicons name="person-circle-outline" color="black" size={20}/>,
           }}        
         />
         <Tab.Screen
-          name="Scanner"
+          name="QR読み取り
+          "
           component={ScannerScreen}
           options={{
             tabBarIcon: ({ focused }) => <Ionicons name="scan-outline" color="black" size={20}/>,
@@ -61,14 +71,28 @@ const UserTabScreen = ( props ) => {
 };
 
 const styles = StyleSheet.create({
-  Btn: {
-    width: 100,
-    height: 36,
-    borderRadius: 5,
-    backgroundColor: 'lightgray',
+  hBtn: {
+    width: 80,
+    height: 30,
+    borderRadius: 7,
+    backgroundColor: 'orange',
     marginLeft: 'auto',
-    marginBottom: 20,
+    position: 'absolute',
+    top: -20,
+    right: -5,
   },
+  hImg: {
+    width: 140,
+    height: 40,
+  },
+  hbtnTxt: {
+    fontSize: 16,
+    color: 'white',
+    fontWeight: 'bold',
+    position: 'absolute',
+    top: 5,
+    left: 3,
+  }
 });
 
 export default UserTabScreen;
