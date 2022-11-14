@@ -3,7 +3,6 @@ import { StyleSheet, View, Image, Button,} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeScreen from './screens/HomeScreen';
 import UserTabScreen from './screens/UserTabScreen';
 import ContactScreen from './screens/ContactScreen';
 import AttendScreen from './screens/AttendScreen';
@@ -86,20 +85,14 @@ function App() {
   );
 }
 
-// export default App;
-
 export default withAuthenticator(App,{
   usernameAttributes: "email",
   signUpConfig: signUpConfig,
-  theme: AmplifyTheme
+  theme: AmplifyTheme,
+  socialProviders: "Google"
 });
 
 I18n.putVocabularies(vocabularies);
 I18n.setLanguage('ja');
 
-<Stack.Screen name="Home" component={HomeScreen} 
-options={{
-    headerShown: false
-  }}
-/>
 

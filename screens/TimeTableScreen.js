@@ -1,8 +1,16 @@
-import React from 'react';
-import { View, Text, Image, Button, StyleSheet, TouchableWithoutFeedback } from 'react-native';
-import { API } from 'aws-amplify';
+import React, {useState, useEffect} from 'react';
+import { 
+  View,
+  Text, 
+  Image, 
+  Button, 
+  StyleSheet, 
+  TouchableWithoutFeedback 
+} from 'react-native';
+import { API, graphqlOperation } from 'aws-amplify';
 import * as queries from '../src/graphql/queries';
 import * as mutations from '../src/graphql/mutations';
+import { useSafeAreaFrame } from 'react-native-safe-area-context';
 
 async function signOut() {
   try {
@@ -32,8 +40,26 @@ const TimeTableScreen = ( props ) => {
     ),
   });
 
+  const [employees, setEmployees] = useState([])
+  useEffect(() => {
+    fetchEmployees()
+  }, [])
+
+  async function fetchEmployees() {
+  try {  
+    const employeesData = await API.graphql(
+      graphqlOperation(queries.listEmployees)
+    )
+      const employees = employeesData.data.listEmployees.items
+      console.log(employees)
+      setEmployees(employees)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   // const employeeDetails = {
-  //   name: 'test',
+  //   name: 'hello',
   //   flag: true
   // };
   // const newEmployee = API.graphql({
@@ -41,13 +67,27 @@ const TimeTableScreen = ( props ) => {
   //   variables: {input: employeeDetails}
   // });
 
-  const employees = API.graphql({
-    query: queries.listEmployees,
-    authMode: "API_KEY"
-  });
-  console.log(employees);
+  // try {
+  //   const employees = API.graphql({
+  //     query: queries.listEmployees,
+  //     authMode: "API_KEY"
+  //   });
+  //   console.log(employees)
+  // } catch (e) {
+  //   console.log(e)
+  // }
+  
   return (
     <View>
+      {
+        employees.map((data, index) => { 
+          return (
+            <View key={index}>
+              <Text>{data.id}</Text>
+            </View>
+          )
+        })
+      }
       <Text>時間割画面</Text>
     </View>
   );

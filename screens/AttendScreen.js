@@ -28,7 +28,7 @@ const AttendScreen = ( props ) => {
         </View>
       ),
       headerLeft: () => (
-        <Button title='戻る' onPress={() => props.navigation.navigate('UserTab')}/>
+        <Button title='戻る' onPress={() => props.navigation.replace('UserTab')}/>
       ),
     });
   return (

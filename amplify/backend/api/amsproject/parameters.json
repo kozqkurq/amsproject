@@ -2,5 +2,5 @@
   "AppSyncApiName": "amsproject",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-10-28T08:19:03.478Z"
+  "AuthModeLastUpdated": "2022-11-12T12:04:32.301Z"
 }
