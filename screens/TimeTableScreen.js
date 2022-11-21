@@ -1,13 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { 
-  View,
-  Text, 
-  Image, 
-  Button, 
-  StyleSheet, 
-  TouchableWithoutFeedback 
-} from 'react-native';
-import { API, graphqlOperation } from 'aws-amplify';
+import { View,Text, Image, Button, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { API, autoShowTooltip, graphqlOperation } from 'aws-amplify';
 import * as queries from '../src/graphql/queries';
 import * as mutations from '../src/graphql/mutations';
 import { useSafeAreaFrame } from 'react-native-safe-area-context';
@@ -40,33 +33,33 @@ const TimeTableScreen = ( props ) => {
     ),
   });
 
-  const [employees, setEmployees] = useState([])
-  useEffect(() => {
-    fetchEmployees()
-  }, [])
+  // const [classes, setClasses] = useState([])
+  // useEffect(() => {
+  //   fetchClass()
+  // }, [])
 
-  async function fetchEmployees() {
-  try {  
-    const employeesData = await API.graphql(
-      graphqlOperation(queries.listEmployees)
-    )
-      const employees = employeesData.data.listEmployees.items
-      console.log(employees)
-      setEmployees(employees)
-    } catch (e) {
-      console.log(e)
-    }
-  }
+  // async function fetchClass() {
+  // try {  
+  //   const classData = await API.graphql(
+  //     graphqlOperation(queries.listClasss)
+  //   )
+  //     const classes = classData.data.listClasss.items
+  //     console.log(classes)
+  //     setClasses(classes)
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
 
-  // const employeeDetails = {
-  //   name: 'hello',
-  //   flag: true
-  // };
-  // const newEmployee = API.graphql({
-  //   query: mutations.createEmployee,
-  //   variables: {input: employeeDetails}
-  // });
+  const classDetails = {
+    name: 'React',
+  };
+  const newClass = API.graphql({
+    query: mutations.createClass,
+    variables: {input: classDetails}
+  });
 
+  
   // try {
   //   const employees = API.graphql({
   //     query: queries.listEmployees,
@@ -78,8 +71,8 @@ const TimeTableScreen = ( props ) => {
   // }
   
   return (
-    <View>
-      {
+    <View style={styles.Container}>
+      {/* {
         employees.map((data, index) => { 
           return (
             <View key={index}>
@@ -87,8 +80,11 @@ const TimeTableScreen = ( props ) => {
             </View>
           )
         })
-      }
-      <Text>時間割画面</Text>
+      } */}
+      <View style={styles.ImgWrap}>
+        <Image style={styles.Img2} source={require('../images/AI3B.png')}/>
+      </View>
+      
     </View>
   );
 };
@@ -116,6 +112,20 @@ const styles = StyleSheet.create({
     top: 5,
     left: 3,
   },
+  Container: {
+    flex: 1,
+    backgroundColor: 'white'
+  },
+  ImgWrap: {
+    marginTop: 20
+  },
+  Img2: {
+    width: '95%',
+    height: '57%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    borderRadius: 3,
+  }
 });
 
 export default TimeTableScreen;

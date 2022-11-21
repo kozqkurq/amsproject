@@ -4,10 +4,18 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Auth } from "aws-amplify";
 
-import UserScreen from './UserScreen';
+import StudentScreen from './StudentScreen';
 import ScannerScreen from './ScannerScreen';
 
 const Tab = createBottomTabNavigator();
+
+async function getEMail() {
+  const { attributes } = await Auth.currentAuthenticatedUser();
+  console.log(attributes)
+  // const mail = attributes.email
+  // const name = attributes.name
+}
+getEMail()
 
 const UserTabScreen = ( props ) => {
   props.navigation.setOptions({
@@ -29,9 +37,10 @@ const UserTabScreen = ( props ) => {
       <Tab.Navigator 
         screenOptions={{ headerShown: false,}}
       >
+        {/* {name == "Student" && <Tab.Screen>{・・・}</Tab.Screen>} */}
         <Tab.Screen
           name="ユーザー"
-          component={UserScreen}
+          component={StudentScreen}
           options={{
             tabBarIcon: ({ focused }) => <
               Ionicons name="person-circle-outline" 

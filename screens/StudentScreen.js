@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Image, Text, Button, TouchableOpacity, StyleSheet } from 'react-native';
 
-const UserScreen = ({ navigation }) => {
+const StudentScreen = ({ navigation }) => {
 
   return (
     <View style={ styles.Container }>
       <View style={ styles.Box1 }>
-          <Text style={{ fontSize: 18, position: 'absolute', left: 80, bottom: 50}}>連絡がありません</Text>
+          <Text style={ styles.CTxt }><Text style={{color:'red'}}>5</Text>件の連絡があります</Text>
           <View style={ styles.btnBox }>
                <TouchableOpacity onPress={() => navigation.replace('Contact')}>
                     <Text style={styles.btnTxt}>連絡一覧へ</Text>
@@ -94,7 +94,15 @@ const styles = StyleSheet.create({
        left: 0,
        bottom: 0,
        borderRadius: 16,
+     },
+     CTxt: {
+      fontSize: 22,
+      fontWeight: 'bold',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      marginBottom: 'auto',
+      marginTop: 'auto'
      }
 });
 
-export default UserScreen;
+export default StudentScreen;

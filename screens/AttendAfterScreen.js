@@ -1,5 +1,4 @@
 import React from 'react';
-import { useFocusEffect } from '@react-navigation/native';
 import { View, Image, Text, TouchableWithoutFeedback, TouchableOpacity, Button, StyleSheet } from 'react-native';
 import { Auth } from "aws-amplify";
 

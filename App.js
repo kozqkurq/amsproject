@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Image, Button,} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -28,43 +28,34 @@ Amplify.configure({
 });
 
 const signUpConfig = {
-    hideAllDefaults: true,
-    signUpFields: [
-      {
-        label: 'UserName',
-        key: 'name',
-        required: true,
-        displayOrder: 1,
-        type: 'string',
-      },
-      {
-        label: 'Email',
-        key: 'email',
-        required: true,
-        displayOrder: 2,
-        type: 'string',
-      },
-      {
-        label: 'Password',
-        key: 'password',
-        required: true,
-        displayOrder: 3,
-        type: 'password',
-      },
-    ],
-  }
+  hideAllDefaults: true,
+  signUpFields: [
+    {
+      label: 'UserName',
+      key: 'name',
+      required: true,
+      displayOrder: 1,
+      type: 'string',
+    },
+    {
+      label: 'Email',
+      key: 'email',
+      required: true,
+      displayOrder: 2,
+      type: 'string',
+    },
+    {
+      label: 'Password',
+      key: 'password',
+      required: true,
+      displayOrder: 3,
+      type: 'password',
+    },
+  ],
+}
 
-    // const [authState, setAuthState] = React.useState<AuthState>();
-    // const [user, setUser] = React.useState<object | undefined>();
+function App({  }) {
 
-    // React.useEffect(() => {
-    //   return onAuthUIStateChange((nextAuthState, authData) => {
-    //       setAuthState(nextAuthState);
-    //       setUser(authData)
-    // });
-    // }, []);
-
-function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
@@ -72,7 +63,7 @@ function App() {
           // initialRouteName="Generator"
       >   
         
-        <Stack.Screen name="UserTab" component={UserTabScreen} options={{ title: 'ユーザ画面' }}/>
+        <Stack.Screen name="UserTab" component={UserTabScreen} />
         <Stack.Screen name="Contact" component={ContactScreen}/>
         <Stack.Screen name="Attend" component={AttendScreen}/>
         <Stack.Screen name="AttendAfter" component={AttendAfterScreen}/>

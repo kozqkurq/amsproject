@@ -25,11 +25,6 @@ export default function Scanner( props ) {
     // Linking.openURL(data)
     navigation.replace('Attend')
     setScanned(true);
-      // .then(() => setScanned(true))
-      // .catch((err) => {
-      //   setScanned(true);
-      //   alert("リンクを開く事ができませんでした。");
-      // });
   };
 
   return (
