@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
   Img2: {
-    width: '95%',
-    height: '57%',
+    width: '90%',
+    // height: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
     borderRadius: 3,
